@@ -293,17 +293,23 @@ function applySiteImage(img, sourceName) {
 }
 
 function attachSpaProgramImages() {
-  document.querySelectorAll('#spaGrid .spa-card').forEach(card => {
+  // Общий каталог используется и на spa.html, и в блоке готовых программ на certificates.html.
+  document.querySelectorAll('.spa-card[data-id]').forEach(card => {
     const program = SPA_MAP[card.getAttribute('data-id')];
     const media = card.querySelector('.spa-card__media');
-    if (!program || !media || media.querySelector('.spa-card__image')) return;
+    if (!program || !media) return;
 
-    const img = document.createElement('img');
-    img.className = 'spa-card__image';
-    img.alt = program.title || 'Фотография SPA-программы Pour Soi';
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    media.insertBefore(img, media.firstChild);
+    let img = media.querySelector('.spa-card__image');
+    if (!img) {
+      img = document.createElement('img');
+      img.className = 'spa-card__image';
+      img.alt = program.title || 'Фотография SPA-программы Pour Soi';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      media.insertBefore(img, media.firstChild);
+    }
+
+    // Изображения лежат в корне GitHub Pages, рядом с HTML-файлами.
     applySiteImage(img, program.img);
   });
 }
