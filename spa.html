@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPA-программы Pour Soi — Для неё, Для двоих, Для него</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Векторная иконка российского мессенджера MAX -->
+  <svg style="display:none;" aria-hidden="true">
+    <defs>
+      <linearGradient id="maxLogoGrad" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#299CFF"/>
+        <stop offset="50%" stop-color="#4E65F5"/>
+        <stop offset="100%" stop-color="#8A3FFC"/>
+      </linearGradient>
+      <symbol id="icon-max-messenger" viewBox="0 0 24 24">
+        <rect width="24" height="24" rx="6" fill="url(#maxLogoGrad)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2 5.2C8.33 5.2 5.2 8.24 5.2 12C5.2 13.43 5.66 14.76 6.44 15.85L5.55 18.25C5.42 18.6 5.76 18.94 6.11 18.81L8.62 17.88C9.68 18.47 10.9 18.8 12.2 18.8C16.07 18.8 19.2 15.76 19.2 12C19.2 8.24 16.07 5.2 12.2 5.2ZM12.2 8.4C14.19 8.4 15.8 10.01 15.8 12C15.8 13.99 14.19 15.6 12.2 15.6C11.16 15.6 10.22 15.16 9.56 14.45L8.45 14.88L8.88 13.78C8.7 13.22 8.6 12.62 8.6 12C8.6 10.01 10.21 8.4 12.2 8.4Z" fill="#FFFFFF"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- 1. ЛАКОНИЧНАЯ ШАПКА НА ТЁМНОМ ФОНЕ (Только текстовое название POUR SOI | Купить сертификат | Школа красоты) -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__name">POUR SOI</span>
+      </a>
+      <div class="header-actions">
+        <a href="certificates.html" class="btn btn--terra" style="padding:10px 18px;font-size:11.5px;">Купить сертификат</a>
+        <a href="school.html" class="header-link ">Школа красоты</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- ВНУТРЕННЯЯ СТРАНИЦА КАТЕГОРИИ SPA-ПРОГРАММ (Для неё / Для двоих / Для него)-->
+  <!-- ========================================================================= -->
+
+  <section class="section">
+    <div class="container">
+      <div style="margin-bottom:20px;">
+        <a href="index.html" class="btn btn--outline" style="padding:8px 14px;font-size:11.5px;">&larr; На главную</a>
+      </div>
+
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Авторские ритуалы Pour Soi</span>
+          <h1 class="h1">SPA-программы</h1>
+        </div>
+        <p class="sub">Выберите категорию, чтобы посмотреть подробный состав программ, продолжительность и стоимость.</p>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="tabs-row" id="spaTabs">
+          <button type="button" class="tab-btn active" data-cat="for-her" onclick="selectSpaTab('for-her')">Для неё</button>
+          <button type="button" class="tab-btn " data-cat="for-two" onclick="selectSpaTab('for-two')">Для двоих</button>
+          <button type="button" class="tab-btn " data-cat="for-him" onclick="selectSpaTab('for-him')">Для него</button>
+          <button type="button" class="tab-btn " data-cat="all" onclick="selectSpaTab('all')">Все программы</button>
+        </div>
+        <div style="min-width:240px;flex:1;max-width:300px;">
+          <input type="search" id="spaSearchInput" class="search-input" placeholder="Поиск по программам..." oninput="filterSpaCards()">
+        </div>
+      </div>
+
+      <div class="spa-grid" id="spaGrid">
+                <article class="spa-card " data-id="her-1" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Абсолютное восстановление»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">60 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Абсолютное восстановление»</h3>
+            <p class="spa-card__desc">Когда хочется выдохнуть, снять напряжение и восстановить силы.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Массаж всего тела на выбор: глубоко расслабляющий или тонизирующий — 60 минут</li>
+                              <li>Завершающая церемония чаепития</li>
+                          </ul>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">3 500 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-1')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Абсолютное восстановление» (Для неё, 3 500 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-2" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Тайский Баланс»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">60 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Тайский Баланс»</h3>
+            <p class="spa-card__desc">Мягкий ритуал для тех, кто хочет отпустить повседневные заботы и уделить время себе.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Тайский релакс-массаж тела — 60 минут</li>
+                              <li>Церемония чаепития</li>
+                          </ul>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">4 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-2')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Тайский Баланс» (Для неё, 4 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-3" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">Спа-программа «Дух Леса»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">Спа-программа «Дух Леса»</h3>
+            <p class="spa-card__desc">Ароматы хвои и кедра, тепло полотенец и целая череда приятных ощущений — для глубокого отдыха.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Приветственный ритуал с горячими полотенцами и масляный массаж стоп</li>
+                              <li>Гармонизирующий массаж тела — 60 минут</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-3')">+ ещё этапов: 3 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">5 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-3')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('Спа-программа «Дух Леса» (Для неё, 5 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-4" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">Спа программа «Кокон Стройности»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">Спа программа «Кокон Стройности»</h3>
+            <p class="spa-card__desc">Бодрящее «холодное» обертывание с ярким ароматом мяты и букета эфирных масел за короткий срок выведут лишнюю жидкость и токсины, подтянут рельеф кожи.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Первое погружение в отдых: аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Пилинг тела для сияющей и гладкой кожи</li>
+                              <li>Моделирующий массаж тела с маслом «Лифтинг» 60 минут</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-4')">+ ещё этапов: 3 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">5 500 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-4')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('Спа программа «Кокон Стройности» (Для неё, 5 500 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-5" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">Спа-программа «Молодильное яблочко»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">Спа-программа «Молодильное яблочко»</h3>
+            <p class="spa-card__desc">Помните ощущение после настоящего выходного, когда хочется улыбнуться своему отражению? Два часа тепла, нежных прикосновений и ухода за кожей. Можно закрыть глаза, забыть о расписании и просто наслаждаться.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Тёплое начало — приветственный ритуал с горячими полотенцами</li>
+                              <li>Обновление кожи — пилинг-массаж всего тела для ощущения гладкости</li>
+                              <li>Час без спешки — расслабляющий массаж тела, 60 минут</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-5')">+ ещё этапов: 3 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">5 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-5')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('Спа-программа «Молодильное яблочко» (Для неё, 5 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-6" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">Спа-программа «Райский остров»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">Спа-программа «Райский остров»</h3>
+            <p class="spa-card__desc">Ваш маленький отпуск среди повседневных забот. Нежный аромат мякоти кокоса, мягкое тепло кокосового масла и расслабляющие прикосновения — два часа, чтобы замедлиться и насладиться заботой о себе.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Тёплое начало — приветственный ритуал с горячими полотенцами подарит ощущение уюта.</li>
+                              <li>Обновление кожи — ароматное кокосовое скрабирование всего тела подарит коже мягкость и гладкость.</li>
+                              <li>Расслабляющий массаж тела, 60 минут — время отпустить напряжение и погрузиться в отдых.</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-6')">+ ещё этапов: 3 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">5 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-6')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('Спа-программа «Райский остров» (Для неё, 5 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-7" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">Спа-программа «Сахасрара — 7-я чакра»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">Спа-программа «Сахасрара — 7-я чакра»</h3>
+            <p class="spa-card__desc">Позвольте себе замедлиться и посвятить два часа только себе. Тепло, нежные ароматы и заботливые прикосновения помогут отпустить напряжение и насладиться отдыхом.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромазнакомство — выберите эфирное масло, аромат которого созвучен вашему настроению.</li>
+                              <li>Тёплое начало — приветственный ритуал с горячими полотенцами подарит ощущение уюта.</li>
+                              <li>Обновление кожи — сахарный пилинг-массаж всего тела сделает кожу мягкой и гладкой.</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-7')">+ ещё этапов: 4 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">6 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-7')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('Спа-программа «Сахасрара — 7-я чакра» (Для неё, 6 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-8" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">НЕЙРО-спа «ГОЛУБОЙ ЛОТОС»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">НЕЙРО-спа «ГОЛУБОЙ ЛОТОС»</h3>
+            <p class="spa-card__desc">Для тех, кто устал быть в постоянном напряжении и хочет наконец выдохнуть. Ароматы, неспешные прикосновения и уход за телом помогают отвлечься от потока мыслей, почувствовать спокойствие и уделить внимание коже. Два часа, в которые можно никуда не торопиться.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Глубокое отшелушивание для ощущения гладкой кожи</li>
+                              <li>Увлажняющая маска для тела с цитоплазмой гигантских красных водорослей</li>
+                              <li>Расслабляющий массаж тела с уходовым маслом-баттером — 60 минут</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-8')">+ ещё этапов: 2 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">6 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-8')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('НЕЙРО-спа «ГОЛУБОЙ ЛОТОС» (Для неё, 6 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-9" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">Женская перезагрузка «9 прикосновений»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">Женская перезагрузка «9 прикосновений»</h3>
+            <p class="spa-card__desc">Время замедлиться и переключить внимание на себя. Программа сочетает массаж тела, стоп, лица и головы, чтобы отдых ощущался с первых минут до завершающего чаепития.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Тайский релакс-массаж тела — 60 минут</li>
+                              <li>Рефлекторный и фрикционный массаж стоп</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-9')">+ ещё этапов: 5 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">7 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-9')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('Женская перезагрузка «9 прикосновений» (Для неё, 7 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-10" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«СПА Выходной»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">180 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«СПА Выходной»</h3>
+            <p class="spa-card__desc">Для тех, кому хочется поставить дела на паузу и провести 2,5 часа в заботе о себе. Здесь не нужно выбирать между уходом за лицом и отдыхом для тела: в программе с вами работают 2 мастера: косметолог и массажист.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Первое погружение в отдых: аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Время для сияния — уход от косметолога и массаж лица, 60 минут</li>
+                              <li>Отдых для всего тела — массаж тела 60 минут</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-10')">+ ещё этапов: 2 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">6 800 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-10')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«СПА Выходной» (Для неё, 6 800 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card " data-id="her-11" data-cat="for-her">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Королевский ритуал в 4 руки»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для неё</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Королевский ритуал в 4 руки»</h3>
+            <p class="spa-card__desc">Особенный подарок: два мастера одновременно заботятся о вашем комфорте, пока вы полностью погружаетесь в отдых.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Программа для стоп со скрабом, питательной маской и горячими полотенцами</li>
+                              <li>Рефлекторный массаж стоп</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('her-11')">+ ещё этапов: 3 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">8 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('her-11')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Королевский ритуал в 4 руки» (Для неё, 8 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="him-1" data-cat="for-him">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Абсолютное восстановление»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для него</span>
+              <span class="badge badge--dark">60 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Абсолютное восстановление»</h3>
+            <p class="spa-card__desc">Снять напряжение, восстановить силы и вернуться в рабочий ритм.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                              <li>Массаж всего тела на выбор: расслабляющий или тонизирующий</li>
+                              <li>Завершающая церемония чаепития</li>
+                          </ul>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">3 500 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('him-1')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Абсолютное восстановление» (Для него, 3 500 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="him-2" data-cat="for-him">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Тайский Баланс»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для него</span>
+              <span class="badge badge--dark">60 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Тайский Баланс»</h3>
+            <p class="spa-card__desc">Мужской ритуал для глубокого расслабления и снятия зажимов.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и выбор эфирного масла</li>
+                              <li>Тайский релакс-массаж тела</li>
+                              <li>Церемония чаепития</li>
+                          </ul>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">4 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('him-2')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Тайский Баланс» (Для него, 4 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="him-3" data-cat="for-him">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Дух Леса»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для него</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Дух Леса»</h3>
+            <p class="spa-card__desc">Ритуал глубокого восстановления с ароматами хвои и кедра.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство</li>
+                              <li>Приветственный ритуал горячими полотенцами и масляный массаж стоп</li>
+                              <li>Гармонизирующий массаж тела</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('him-3')">+ ещё этапов: 2 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">5 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('him-3')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Дух Леса» (Для него, 5 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="him-4" data-cat="for-him">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Спорт»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для него</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Спорт»</h3>
+            <p class="spa-card__desc">Интенсивная проработка мышц после физических нагрузок.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство</li>
+                              <li>Классический массаж тела: снятие мышечного напряжения</li>
+                              <li>Массаж головы</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('him-4')">+ ещё этапов: 2 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">5 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('him-4')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Спорт» (Для него, 5 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="him-5" data-cat="for-him">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Энергия Лидера»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для него</span>
+              <span class="badge badge--dark">120 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Энергия Лидера»</h3>
+            <p class="spa-card__desc">Двухчасовой мужской комплекс: массаж тела, стоп, головы и уход за лицом.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и приветственный ритуал</li>
+                              <li>Рефлекторный массаж ног</li>
+                              <li>Тонизирующий массаж тела</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('him-5')">+ ещё этапов: 2 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">8 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('him-5')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Энергия Лидера» (Для него, 8 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="him-6" data-cat="for-him">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Королевский ритуал в 4 руки»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для него</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Королевский ритуал в 4 руки»</h3>
+            <p class="spa-card__desc">Синхронная работа двух мастеров для глубокого отдыха.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство и программа для стоп</li>
+                              <li>Рефлекторный массаж стоп</li>
+                              <li>Нейро-массаж тела в 4 руки</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('him-6')">+ ещё этапов: 1 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">8 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('him-6')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Королевский ритуал в 4 руки» (Для него, 8 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="two-1" data-cat="for-two">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Прикосновение»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для двоих</span>
+              <span class="badge badge--dark">60 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Прикосновение»</h3>
+            <p class="spa-card__desc">Часовой парный ритуал для синхронного отдыха вдвоём.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство: выбор эфирных масел</li>
+                              <li>Релакс-массаж тела для двоих</li>
+                              <li>Церемония чаепития</li>
+                          </ul>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">6 500 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('two-1')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Прикосновение» (Для двоих, 6 500 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="two-2" data-cat="for-two">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«В Унисон»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для двоих</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«В Унисон»</h3>
+            <p class="spa-card__desc">Полтора часа неспешного расслабления для пары или близких.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство: выбор эфирных масел</li>
+                              <li>Продолжительный релакс-массаж тела</li>
+                              <li>Церемония чаепития</li>
+                          </ul>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">9 000 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('two-2')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«В Унисон» (Для двоих, 9 000 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+                <article class="spa-card is-hidden" data-id="two-3" data-cat="for-two">
+          <div class="spa-card__media">
+            <div class="spa-card__placeholder">
+              <span class="spa-card__placeholder-brand">POUR SOI</span>
+              <span class="spa-card__placeholder-title">«Для Двоих»</span>
+            </div>
+                        <div class="spa-card__badges">
+              <span class="badge badge--light">Для двоих</span>
+              <span class="badge badge--dark">90 минут</span>
+            </div>
+          </div>
+          <div class="spa-card__body">
+            <h3 class="spa-card__title">«Для Двоих»</h3>
+            <p class="spa-card__desc">Расширенный парный ритуал с уходом за стопами, телом, лицом и головой.</p>
+            <div class="spa-card__steps-title">В программе:</div>
+            <ul class="spa-card__steps">
+                              <li>Аромознакомство</li>
+                              <li>Приветственный ритуал и скрабирование ног</li>
+                              <li>Рефлекторный массаж стоп и тайский релакс-массаж тела</li>
+                          </ul>
+                          <button type="button" class="spa-card__more-btn" onclick="openDetail('two-3')">+ ещё этапов: 2 (открыть весь состав)</button>
+                        <div class="spa-card__foot">
+              <div>
+                <span class="spa-card__price-lbl">Стоимость</span>
+                <span class="spa-card__price-val">10 500 ₽</span>
+              </div>
+              <div class="spa-card__btns">
+                <button type="button" class="btn btn--outline" onclick="openDetail('two-3')">Подробнее</button>
+                <button type="button" class="btn btn--primary" onclick="openBooking('«Для Двоих» (Для двоих, 10 500 ₽)')">Запись онлайн</button>
+              </div>
+            </div>
+          </div>
+        </article>
+              </div>
+    </div>
+  </section>
+
+
+  <!-- 7. ФУТЕР САЙТА (БЕЗ ВЫМЫШЛЕННОЙ ЭМБЛЕМЫ p.) -->
+  <footer class="site-footer" id="contacts">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand" style="color:#fff;margin-bottom:14px;">
+            <span class="brand__name">POUR SOI</span>
+          </div>
+          <p style="font-size:14px;color:rgba(248,246,242,0.75);max-width:340px;">
+            Пространство красоты, ухода и восстановления в Челябинске. Время для себя в атмосфере заботы и комфорта.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <ul class="footer-links">
+            <li>г. Челябинск, ул. Энтузиастов, 34</li>
+            <li>Ежедневно: 10:00–20:00</li>
+            <li><a href="tel:+79514814981" style="font-weight:600;color:#fff;">+7 (951) 481-49-81</a></li>
+            <li>
+              <a href="https://max.ru/poursoi" target="_blank" rel="noopener" class="footer-max-link">
+                <svg class="max-icon"><use href="#icon-max-messenger"></use></svg>
+                <span>Написать в мессенджер MAX &nearr;</span>
+              </a>
+            </li>
+            <li><a href="https://t.me/poursoi" target="_blank" rel="noopener">Написать в Telegram &nearr;</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Главная страница</a></li>
+            <li><a href="spa.html?cat=for-her">SPA-программы</a></li>
+            <li><a href="certificates.html" style="color:var(--accent-terra);font-weight:600;">Купить сертификат</a></li>
+            <li><a href="school.html">Школа красоты для девочек</a></li>
+                          <li><a href="#contacts" onclick="event.preventDefault(); openBooking('Запись онлайн в салон Pour Soi')">Запись онлайн</a></li>
+                      </ul>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;font-size:12px;color:rgba(248,246,242,0.55);">
+        <span>&copy; Pour Soi &bull; г. Челябинск, ул. Энтузиастов, 34</span>
+        <span>Ежедневно 10:00–20:00</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- МОДАЛЬНОЕ ОКНО 1: ПОДРОБНЕЕ О SPA-ПРОГРАММЕ -->
+  <div class="modal-backdrop" id="modalDetail" onclick="if(event.target===this)closeModals()">
+    <div class="modal">
+      <button type="button" class="modal__close" onclick="closeModals()">&times;</button>
+      <div id="detMeta" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-terra);margin-bottom:6px;"></div>
+      <h3 id="detTitle" class="h2" style="font-size:30px;margin-bottom:10px;padding-right:34px;"></h3>
+      <p id="detDesc" style="font-size:14px;color:var(--text-muted);margin-bottom:16px;"></p>
+      <div style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-terra);margin-bottom:8px;">Полный состав ритуала:</div>
+      <ul id="detSteps" style="padding-left:18px;margin-bottom:16px;font-size:14px;display:grid;gap:6px;"></ul>
+      <div id="detNote" style="display:none;font-size:13px;font-style:italic;color:var(--text-muted);margin-bottom:14px;"></div>
+      <div style="background:var(--bg-limestone);padding:12px 14px;border-radius:6px;font-size:12.5px;margin-bottom:18px;">
+        <strong>Для вашего комфорта:</strong> в салоне предоставляются халат, тапочки, одноразовое бельё, душ и завершающая церемония чаепития.
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:14px;border-top:1px solid var(--line);">
+        <div>
+          <span style="font-size:11px;color:var(--text-muted);display:block;">Стоимость программы</span>
+          <strong id="detPrice" style="font-family:var(--serif);font-size:28px;"></strong>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="btn btn--outline" id="detGiftBtn">Купить сертификат</button>
+          <button type="button" class="btn btn--primary" id="detBookBtn">Запись онлайн</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО 2: ЗАКАЗ ПОДАРОЧНОГО СЕРТИФИКАТА -->
+  <div class="modal-backdrop" id="modalCertificate" onclick="if(event.target===this)closeModals()">
+    <div class="modal">
+      <button type="button" class="modal__close" onclick="closeModals()">&times;</button>
+      <span class="eyebrow">Подарочный сертификат Pour Soi</span>
+      <h3 class="h2" style="font-size:28px;margin-bottom:6px;padding-right:34px;">Заказ подарочного сертификата</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
+        Заполните форму один раз — сайт автоматически сформирует и скопирует готовую заявку для отправки администратору в MAX или Telegram. Оформление — в течение суток, срок действия — 3 месяца.
+      </p>
+
+      <div style="display:grid;gap:12px;">
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Выбранная программа или номинал сертификата</label>
+          <input type="text" id="certOrderItem" class="search-input">
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Ваше имя (покупатель) *</label>
+            <input type="text" id="certBuyerName" class="search-input" placeholder="Как к вам обращаться">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Телефон для связи *</label>
+            <input type="tel" id="certBuyerPhone" class="search-input" placeholder="+7 (___) ___-__-__">
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Имя получателя (необязательно)</label>
+            <input type="text" id="certRecipientName" class="search-input" placeholder="Для кого подарок">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Комментарий</label>
+            <input type="text" id="certComment" class="search-input" placeholder="Электронный или печатный">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Поздравление или пожелания (необязательно)</label>
+          <input type="text" id="certGreeting" class="search-input" placeholder="Тёплые слова для получателя">
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+          <button type="button" class="btn btn--terra" style="flex:1;" onclick="submitCertificateOrder('max')">
+            <svg class="max-icon"><use href="#icon-max-messenger"></use></svg>
+            <span>Отправить заявку в MAX</span>
+          </button>
+          <button type="button" class="btn btn--primary" style="flex:1;" onclick="submitCertificateOrder('telegram')">
+            <span>Отправить заявку в Telegram &nearr;</span>
+          </button>
+        </div>
+
+        <div class="prepared-notice" id="certPreparedNotice">
+          <strong>✅ Заявка подготовлена и скопирована!</strong><br>
+          В открывшемся чате вставьте сообщение (<strong>Ctrl+V</strong> или «Вставить») и отправьте его:
+          <div class="prepared-preview" id="certPreparedText"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+            <button type="button" class="btn btn--outline" style="padding:7px 12px;font-size:11px;background:#fff;" onclick="copyTextWithFallback(document.getElementById('certPreparedText').textContent, this)">Скопировать текст ещё раз</button>
+            <a href="https://max.ru/poursoi" target="_blank" rel="noopener" class="btn btn--terra" style="padding:7px 12px;font-size:11px;">Открыть MAX &nearr;</a>
+            <a id="certTgDirectLink" href="https://t.me/poursoi" target="_blank" rel="noopener" class="btn btn--primary" style="padding:7px 12px;font-size:11px;">Открыть Telegram &nearr;</a>
+          </div>
+        </div>
+
+        <div class="max-phone-helper">
+          <span>Профиль <strong>«Пурсуа»</strong> в MAX по номеру: <strong>+7 (951) 481-49-81</strong></span>
+          <button type="button" class="btn btn--outline" style="padding:5px 10px;font-size:11px;" onclick="copyTextWithFallback('+79514814981', this)">Скопировать номер</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО 3: ВНУТРЕННЕЕ ОКНО «ЗАПИСЬ ОНЛАЙН» (ТОЛЬКО MAX И TELEGRAM) -->
+  <div class="modal-backdrop" id="modalBooking" onclick="if(event.target===this)closeModals()">
+    <div class="modal">
+      <button type="button" class="modal__close" onclick="closeModals()">&times;</button>
+      <span class="eyebrow">Запись в салон Pour Soi</span>
+      <h3 class="h2" style="font-size:28px;margin-bottom:6px;padding-right:34px;">Запись онлайн</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">
+        Выберите желаемую дату в календаре и удобное время (пожелание к визиту — администратор сверит график мастеров и подтвердит запись).
+      </p>
+
+      <div style="display:grid;gap:12px;">
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Выбранное направление или программа</label>
+          <input type="text" id="bookService" class="search-input">
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Желаемая дата визита (пожелание)</label>
+            <input type="date" id="bookDateInput" class="search-input" min="2026-11-05" value="2026-11-05">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Желаемое время (10:00–20:00)</label>
+            <select id="bookTimeSelect" class="search-input">
+              <option value="Любое удобное время">Любое удобное время</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00" selected>12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Ваше имя *</label>
+            <input type="text" id="bookName" class="search-input" placeholder="Как к вам обращаться">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Телефон для связи *</label>
+            <input type="tel" id="bookPhone" class="search-input" placeholder="+7 (___) ___-__-__">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Комментарий (необязательно)</label>
+          <input type="text" id="bookComment" class="search-input" placeholder="Пожелания по процедуре">
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+          <button type="button" class="btn btn--terra" style="flex:1;" onclick="submitProcedureBooking('max')">
+            <svg class="max-icon"><use href="#icon-max-messenger"></use></svg>
+            <span>Отправить заявку в MAX</span>
+          </button>
+          <button type="button" class="btn btn--primary" style="flex:1;" onclick="submitProcedureBooking('telegram')">
+            <span>Отправить в Telegram &nearr;</span>
+          </button>
+        </div>
+
+        <div class="prepared-notice" id="bookPreparedNotice">
+          <strong>✅ Заявка подготовлена и скопирована!</strong><br>
+          В открывшемся чате вставьте сообщение (<strong>Ctrl+V</strong> или «Вставить») и отправьте его:
+          <div class="prepared-preview" id="bookPreparedText"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+            <button type="button" class="btn btn--outline" style="padding:7px 12px;font-size:11px;background:#fff;" onclick="copyTextWithFallback(document.getElementById('bookPreparedText').textContent, this)">Скопировать текст ещё раз</button>
+            <a href="https://max.ru/poursoi" target="_blank" rel="noopener" class="btn btn--terra" style="padding:7px 12px;font-size:11px;">Открыть MAX &nearr;</a>
+            <a id="bookTgDirectLink" href="https://t.me/poursoi" target="_blank" rel="noopener" class="btn btn--primary" style="padding:7px 12px;font-size:11px;">Открыть Telegram &nearr;</a>
+          </div>
+        </div>
+
+        <div class="max-phone-helper">
+          <span>Профиль <strong>«Пурсуа»</strong> в MAX по номеру: <strong>+7 (951) 481-49-81</strong></span>
+          <button type="button" class="btn btn--outline" style="padding:5px 10px;font-size:11px;" onclick="copyTextWithFallback('+79514814981', this)">Скопировать номер</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

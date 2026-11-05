@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Школа красоты для девочек (10–15 лет) — Pour Soi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Векторная иконка российского мессенджера MAX -->
+  <svg style="display:none;" aria-hidden="true">
+    <defs>
+      <linearGradient id="maxLogoGrad" x1="2" y1="22" x2="22" y2="2" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#299CFF"/>
+        <stop offset="50%" stop-color="#4E65F5"/>
+        <stop offset="100%" stop-color="#8A3FFC"/>
+      </linearGradient>
+      <symbol id="icon-max-messenger" viewBox="0 0 24 24">
+        <rect width="24" height="24" rx="6" fill="url(#maxLogoGrad)"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12.2 5.2C8.33 5.2 5.2 8.24 5.2 12C5.2 13.43 5.66 14.76 6.44 15.85L5.55 18.25C5.42 18.6 5.76 18.94 6.11 18.81L8.62 17.88C9.68 18.47 10.9 18.8 12.2 18.8C16.07 18.8 19.2 15.76 19.2 12C19.2 8.24 16.07 5.2 12.2 5.2ZM12.2 8.4C14.19 8.4 15.8 10.01 15.8 12C15.8 13.99 14.19 15.6 12.2 15.6C11.16 15.6 10.22 15.16 9.56 14.45L8.45 14.88L8.88 13.78C8.7 13.22 8.6 12.62 8.6 12C8.6 10.01 10.21 8.4 12.2 8.4Z" fill="#FFFFFF"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- 1. ЛАКОНИЧНАЯ ШАПКА НА ТЁМНОМ ФОНЕ (Только текстовое название POUR SOI | Купить сертификат | Школа красоты) -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="brand">
+        <span class="brand__name">POUR SOI</span>
+      </a>
+      <div class="header-actions">
+        <a href="certificates.html" class="btn btn--terra" style="padding:10px 18px;font-size:11.5px;">Купить сертификат</a>
+        <a href="school.html" class="header-link is-active">Школа красоты</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- СТРАНИЦА «ШКОЛА КРАСОТЫ ДЛЯ ДЕВОЧЕК»                                      -->
+  <!-- ========================================================================= -->
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero__box">
+        <div class="hero__content">
+          <div>
+            <span class="eyebrow">Образовательный проект Pour Soi &bull; 10–15 лет</span>
+            <h1 class="h1">Школа красоты <em>для девочек.</em></h1>
+            <p class="hero__lead">
+              Три практических мастер-класса от визажиста, стилиста и косметолога в пространстве салона красоты Pour Soi. Бережно учим ухаживать за юной кожей, разбираться в косметике и подчёркивать индивидуальность.
+            </p>
+            <div class="hero__actions">
+              <button type="button" class="btn btn--terra" onclick="openBooking('Запись в Школу красоты для девочек (6 500 ₽)')">Записать ребёнка на курс &rarr;</button>
+              <a href="#school-program" class="btn btn--outline">Программа занятий</a>
+            </div>
+          </div>
+          <ul class="hero__adv-list">
+            <li>Возраст: 10–15 лет</li>
+            <li>3 практических занятия по 2 часа</li>
+            <li>6 500 ₽ + набор косметики «Are you ok?» в подарок</li>
+          </ul>
+        </div>
+
+        <div class="hero__gallery-col" style="background:#EFE6DF;padding:20px;justify-content:center;">
+          <div class="school-poster-card">
+            <div class="school-poster-card__top-photo">
+              <img src="school_poster.jpg" onerror="this.src='for_her/her10.jpg'" alt="Школа красоты для девочек в Pour Soi">
+            </div>
+            <div class="school-poster-card__body">
+              <div style="font-size:28px;font-weight:500;letter-spacing:0.08em;line-height:1.1;">ШКОЛА КРАСОТЫ</div>
+              <div style="font-size:14px;font-weight:600;letter-spacing:0.18em;color:#B27868;margin:8px 0;">ДЛЯ ПОДРОСТКОВ</div>
+              <div class="school-poster-icons">
+                <div class="school-poster-icon-item"><span class="school-poster-circle">🖌️</span><span>Визажист</span></div>
+                <div class="school-poster-icon-item"><span class="school-poster-circle">👗</span><span>Стилист</span></div>
+                <div class="school-poster-icon-item"><span class="school-poster-circle">🌿</span><span>Косметолог</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--limestone" id="school-program">
+    <div class="container">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">Формат курса: 3 практических занятия по 2 часа</span>
+          <h2 class="h2">Программа обучения и <em>преподаватели.</em></h2>
+        </div>
+      </div>
+
+      <div class="offers-grid" style="margin-bottom:40px;">
+        <div class="offer-card">
+          <div>
+            <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);margin-bottom:10px;display:inline-block;">Мастер-класс 1 &bull; 2 часа</span>
+            <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px;">Практикум с косметологом</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);">Диагностика типа кожи, правила безопасного домашнего ухода, разбор составов и практика бережного очищения и увлажнения.</p>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Преподаватель:</strong> косметолог Динара Новокрещенова</div>
+        </div>
+        <div class="offer-card">
+          <div>
+            <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);margin-bottom:10px;display:inline-block;">Мастер-класс 2 &bull; 2 часа</span>
+            <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px;">Практикум с визажистом</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);">Гигиена кистей и косметички, лёгкие текстуры, уход за бровями и губами, создание свежего естественного макияжа.</p>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Преподаватель:</strong> визажист Светлана Инглина</div>
+        </div>
+        <div class="offer-card">
+          <div>
+            <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);margin-bottom:10px;display:inline-block;">Мастер-класс 3 &bull; 2 часа</span>
+            <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px;">Практикум со стилистом</h3>
+            <p style="font-size:13.5px;color:var(--text-muted);">Сочетания цветов, пропорции, базовый гардероб и поиск собственного гармоничного стиля.</p>
+          </div>
+          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Преподаватель:</strong> имиджмейкер Маргарита Сирашева</div>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary><span>1. Кто проводит занятия?</span><span>+</span></summary>
+          <p>Занятия ведут опытные специалисты в сфере красоты — косметолог Динара Новокрещенова, визажист Светлана Инглина и имиджмейкер Маргарита Сирашева.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span>2. Безопасна ли косметика для подростков?</span><span>+</span></summary>
+          <p>На занятиях используются сертифицированные косметические средства, в том числе косметика собственного производства. Каждая участница получает набор «Are you ok?» в подарок.</p>
+        </details>
+        <details class="faq-item">
+          <summary><span>3. Нужно ли иметь опыт или покупать косметику для занятий?</span><span>+</span></summary>
+          <p>Нет, специальная подготовка не требуется. Все необходимые средства предоставляются на занятиях.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ФУТЕР САЙТА (БЕЗ ВЫМЫШЛЕННОЙ ЭМБЛЕМЫ p.) -->
+  <footer class="site-footer" id="contacts">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand" style="color:#fff;margin-bottom:14px;">
+            <span class="brand__name">POUR SOI</span>
+          </div>
+          <p style="font-size:14px;color:rgba(248,246,242,0.75);max-width:340px;">
+            Пространство красоты, ухода и восстановления в Челябинске. Время для себя в атмосфере заботы и комфорта.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <ul class="footer-links">
+            <li>г. Челябинск, ул. Энтузиастов, 34</li>
+            <li>Ежедневно: 10:00–20:00</li>
+            <li><a href="tel:+79514814981" style="font-weight:600;color:#fff;">+7 (951) 481-49-81</a></li>
+            <li>
+              <a href="https://max.ru/poursoi" target="_blank" rel="noopener" class="footer-max-link">
+                <svg class="max-icon"><use href="#icon-max-messenger"></use></svg>
+                <span>Написать в мессенджер MAX &nearr;</span>
+              </a>
+            </li>
+            <li><a href="https://t.me/poursoi" target="_blank" rel="noopener">Написать в Telegram &nearr;</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Навигация</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Главная страница</a></li>
+            <li><a href="spa.html?cat=for-her">SPA-программы</a></li>
+            <li><a href="certificates.html" style="color:var(--accent-terra);font-weight:600;">Купить сертификат</a></li>
+            <li><a href="school.html">Школа красоты для девочек</a></li>
+                          <li><a href="#contacts" onclick="event.preventDefault(); openBooking('Запись онлайн в салон Pour Soi')">Запись онлайн</a></li>
+                      </ul>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;font-size:12px;color:rgba(248,246,242,0.55);">
+        <span>&copy; Pour Soi &bull; г. Челябинск, ул. Энтузиастов, 34</span>
+        <span>Ежедневно 10:00–20:00</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- МОДАЛЬНОЕ ОКНО 1: ПОДРОБНЕЕ О SPA-ПРОГРАММЕ -->
+  <div class="modal-backdrop" id="modalDetail" onclick="if(event.target===this)closeModals()">
+    <div class="modal">
+      <button type="button" class="modal__close" onclick="closeModals()">&times;</button>
+      <div id="detMeta" style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:var(--accent-terra);margin-bottom:6px;"></div>
+      <h3 id="detTitle" class="h2" style="font-size:30px;margin-bottom:10px;padding-right:34px;"></h3>
+      <p id="detDesc" style="font-size:14px;color:var(--text-muted);margin-bottom:16px;"></p>
+      <div style="font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-terra);margin-bottom:8px;">Полный состав ритуала:</div>
+      <ul id="detSteps" style="padding-left:18px;margin-bottom:16px;font-size:14px;display:grid;gap:6px;"></ul>
+      <div id="detNote" style="display:none;font-size:13px;font-style:italic;color:var(--text-muted);margin-bottom:14px;"></div>
+      <div style="background:var(--bg-limestone);padding:12px 14px;border-radius:6px;font-size:12.5px;margin-bottom:18px;">
+        <strong>Для вашего комфорта:</strong> в салоне предоставляются халат, тапочки, одноразовое бельё, душ и завершающая церемония чаепития.
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:14px;border-top:1px solid var(--line);">
+        <div>
+          <span style="font-size:11px;color:var(--text-muted);display:block;">Стоимость программы</span>
+          <strong id="detPrice" style="font-family:var(--serif);font-size:28px;"></strong>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="btn btn--outline" id="detGiftBtn">Купить сертификат</button>
+          <button type="button" class="btn btn--primary" id="detBookBtn">Запись онлайн</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО 2: ЗАКАЗ ПОДАРОЧНОГО СЕРТИФИКАТА -->
+  <div class="modal-backdrop" id="modalCertificate" onclick="if(event.target===this)closeModals()">
+    <div class="modal">
+      <button type="button" class="modal__close" onclick="closeModals()">&times;</button>
+      <span class="eyebrow">Подарочный сертификат Pour Soi</span>
+      <h3 class="h2" style="font-size:28px;margin-bottom:6px;padding-right:34px;">Заказ подарочного сертификата</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
+        Заполните форму один раз — сайт автоматически сформирует и скопирует готовую заявку для отправки администратору в MAX или Telegram. Оформление — в течение суток, срок действия — 3 месяца.
+      </p>
+
+      <div style="display:grid;gap:12px;">
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Выбранная программа или номинал сертификата</label>
+          <input type="text" id="certOrderItem" class="search-input">
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Ваше имя (покупатель) *</label>
+            <input type="text" id="certBuyerName" class="search-input" placeholder="Как к вам обращаться">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Телефон для связи *</label>
+            <input type="tel" id="certBuyerPhone" class="search-input" placeholder="+7 (___) ___-__-__">
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Имя получателя (необязательно)</label>
+            <input type="text" id="certRecipientName" class="search-input" placeholder="Для кого подарок">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Комментарий</label>
+            <input type="text" id="certComment" class="search-input" placeholder="Электронный или печатный">
+          </div>
+        </div>
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Поздравление или пожелания (необязательно)</label>
+          <input type="text" id="certGreeting" class="search-input" placeholder="Тёплые слова для получателя">
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+          <button type="button" class="btn btn--terra" style="flex:1;" onclick="submitCertificateOrder('max')">
+            <svg class="max-icon"><use href="#icon-max-messenger"></use></svg>
+            <span>Отправить заявку в MAX</span>
+          </button>
+          <button type="button" class="btn btn--primary" style="flex:1;" onclick="submitCertificateOrder('telegram')">
+            <span>Отправить заявку в Telegram &nearr;</span>
+          </button>
+        </div>
+
+        <div class="prepared-notice" id="certPreparedNotice">
+          <strong>✅ Заявка подготовлена и скопирована!</strong><br>
+          В открывшемся чате вставьте сообщение (<strong>Ctrl+V</strong> или «Вставить») и отправьте его:
+          <div class="prepared-preview" id="certPreparedText"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+            <button type="button" class="btn btn--outline" style="padding:7px 12px;font-size:11px;background:#fff;" onclick="copyTextWithFallback(document.getElementById('certPreparedText').textContent, this)">Скопировать текст ещё раз</button>
+            <a href="https://max.ru/poursoi" target="_blank" rel="noopener" class="btn btn--terra" style="padding:7px 12px;font-size:11px;">Открыть MAX &nearr;</a>
+            <a id="certTgDirectLink" href="https://t.me/poursoi" target="_blank" rel="noopener" class="btn btn--primary" style="padding:7px 12px;font-size:11px;">Открыть Telegram &nearr;</a>
+          </div>
+        </div>
+
+        <div class="max-phone-helper">
+          <span>Профиль <strong>«Пурсуа»</strong> в MAX по номеру: <strong>+7 (951) 481-49-81</strong></span>
+          <button type="button" class="btn btn--outline" style="padding:5px 10px;font-size:11px;" onclick="copyTextWithFallback('+79514814981', this)">Скопировать номер</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО 3: ВНУТРЕННЕЕ ОКНО «ЗАПИСЬ ОНЛАЙН» (ТОЛЬКО MAX И TELEGRAM) -->
+  <div class="modal-backdrop" id="modalBooking" onclick="if(event.target===this)closeModals()">
+    <div class="modal">
+      <button type="button" class="modal__close" onclick="closeModals()">&times;</button>
+      <span class="eyebrow">Запись в салон Pour Soi</span>
+      <h3 class="h2" style="font-size:28px;margin-bottom:6px;padding-right:34px;">Запись онлайн</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">
+        Выберите желаемую дату в календаре и удобное время (пожелание к визиту — администратор сверит график мастеров и подтвердит запись).
+      </p>
+
+      <div style="display:grid;gap:12px;">
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Выбранное направление или программа</label>
+          <input type="text" id="bookService" class="search-input">
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Желаемая дата визита (пожелание)</label>
+            <input type="date" id="bookDateInput" class="search-input" min="2026-11-05" value="2026-11-05">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Желаемое время (10:00–20:00)</label>
+            <select id="bookTimeSelect" class="search-input">
+              <option value="Любое удобное время">Любое удобное время</option>
+              <option value="10:00">10:00</option>
+              <option value="10:30">10:30</option>
+              <option value="11:00">11:00</option>
+              <option value="11:30">11:30</option>
+              <option value="12:00" selected>12:00</option>
+              <option value="12:30">12:30</option>
+              <option value="13:00">13:00</option>
+              <option value="13:30">13:30</option>
+              <option value="14:00">14:00</option>
+              <option value="14:30">14:30</option>
+              <option value="15:00">15:00</option>
+              <option value="15:30">15:30</option>
+              <option value="16:00">16:00</option>
+              <option value="16:30">16:30</option>
+              <option value="17:00">17:00</option>
+              <option value="17:30">17:30</option>
+              <option value="18:00">18:00</option>
+              <option value="18:30">18:30</option>
+              <option value="19:00">19:00</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Ваше имя *</label>
+            <input type="text" id="bookName" class="search-input" placeholder="Как к вам обращаться">
+          </div>
+          <div>
+            <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Телефон для связи *</label>
+            <input type="tel" id="bookPhone" class="search-input" placeholder="+7 (___) ___-__-__">
+          </div>
+        </div>
+
+        <div>
+          <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Комментарий (необязательно)</label>
+          <input type="text" id="bookComment" class="search-input" placeholder="Пожелания по процедуре">
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">
+          <button type="button" class="btn btn--terra" style="flex:1;" onclick="submitProcedureBooking('max')">
+            <svg class="max-icon"><use href="#icon-max-messenger"></use></svg>
+            <span>Отправить заявку в MAX</span>
+          </button>
+          <button type="button" class="btn btn--primary" style="flex:1;" onclick="submitProcedureBooking('telegram')">
+            <span>Отправить в Telegram &nearr;</span>
+          </button>
+        </div>
+
+        <div class="prepared-notice" id="bookPreparedNotice">
+          <strong>✅ Заявка подготовлена и скопирована!</strong><br>
+          В открывшемся чате вставьте сообщение (<strong>Ctrl+V</strong> или «Вставить») и отправьте его:
+          <div class="prepared-preview" id="bookPreparedText"></div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;">
+            <button type="button" class="btn btn--outline" style="padding:7px 12px;font-size:11px;background:#fff;" onclick="copyTextWithFallback(document.getElementById('bookPreparedText').textContent, this)">Скопировать текст ещё раз</button>
+            <a href="https://max.ru/poursoi" target="_blank" rel="noopener" class="btn btn--terra" style="padding:7px 12px;font-size:11px;">Открыть MAX &nearr;</a>
+            <a id="bookTgDirectLink" href="https://t.me/poursoi" target="_blank" rel="noopener" class="btn btn--primary" style="padding:7px 12px;font-size:11px;">Открыть Telegram &nearr;</a>
+          </div>
+        </div>
+
+        <div class="max-phone-helper">
+          <span>Профиль <strong>«Пурсуа»</strong> в MAX по номеру: <strong>+7 (951) 481-49-81</strong></span>
+          <button type="button" class="btn btn--outline" style="padding:5px 10px;font-size:11px;" onclick="copyTextWithFallback('+79514814981', this)">Скопировать номер</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
