@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="poursoi-logo.png">
 </head>
 <body>
 
@@ -26,11 +27,11 @@
     </defs>
   </svg>
 
-  <!-- 1. ЛАКОНИЧНАЯ ШАПКА НА ТЁМНОМ ФОНЕ (Только текстовое название POUR SOI | Купить сертификат | Школа красоты) -->
+  <!-- Шапка с оригинальным логотипом POUR SOI -->
   <header class="site-header">
     <div class="container site-header__inner">
       <a href="index.html" class="brand">
-        <span class="brand__name">POUR SOI</span>
+        <img src="poursoi-logo.png" class="brand__logo" alt="POUR SOI" width="116" height="68" loading="eager" decoding="async">
       </a>
       <div class="header-actions">
         <a href="certificates.html" class="btn btn--terra" style="padding:10px 18px;font-size:11.5px;">Купить сертификат</a>
@@ -48,14 +49,15 @@
       <div class="hero__box">
         <div class="hero__content">
           <div>
-            <span class="eyebrow">Образовательный проект Pour Soi &bull; 10–15 лет</span>
+            <span class="eyebrow">Мастер-классы Pour Soi &bull; 10–15 лет</span>
             <h1 class="h1">Школа красоты <em>для девочек.</em></h1>
             <p class="hero__lead">
-              Три практических мастер-класса от визажиста, стилиста и косметолога в пространстве салона красоты Pour Soi. Бережно учим ухаживать за юной кожей, разбираться в косметике и подчёркивать индивидуальность.
+              Три практических мастер-класса от визажиста, стилиста и косметолога в пространстве салона красоты Pour Soi. Девочки знакомятся с бережным уходом за кожей, косметикой и способами подчеркнуть свою индивидуальность.
             </p>
             <div class="hero__actions">
-              <button type="button" class="btn btn--terra" onclick="openBooking('Запись в Школу красоты для девочек (6 500 ₽)')">Записать ребёнка на курс &rarr;</button>
+              <button type="button" class="btn btn--terra" onclick="openBooking('Запись в Школу красоты для девочек (6 500 ₽)')">Записаться на мастер-классы &rarr;</button>
               <a href="#school-program" class="btn btn--outline">Программа занятий</a>
+              <button type="button" class="btn btn--outline" onclick="openCertificateModal('Подарочный сертификат: мастер-классы Школы красоты для девочек — 6 500 ₽')">Подарить мастер-классы</button>
             </div>
           </div>
           <ul class="hero__adv-list">
@@ -89,8 +91,8 @@
     <div class="container">
       <div class="sec-head">
         <div>
-          <span class="eyebrow">Формат курса: 3 практических занятия по 2 часа</span>
-          <h2 class="h2">Программа обучения и <em>преподаватели.</em></h2>
+          <span class="eyebrow">Формат: 3 практических мастер-класса по 2 часа</span>
+          <h2 class="h2">Мастер-классы и <em>специалисты.</em></h2>
         </div>
       </div>
 
@@ -101,7 +103,7 @@
             <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px;">Практикум с косметологом</h3>
             <p style="font-size:13.5px;color:var(--text-muted);">Диагностика типа кожи, правила безопасного домашнего ухода, разбор составов и практика бережного очищения и увлажнения.</p>
           </div>
-          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Преподаватель:</strong> косметолог Динара Новокрещенова</div>
+          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Ведёт:</strong> косметолог Динара Новокрещенова</div>
         </div>
         <div class="offer-card">
           <div>
@@ -109,7 +111,7 @@
             <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px;">Практикум с визажистом</h3>
             <p style="font-size:13.5px;color:var(--text-muted);">Гигиена кистей и косметички, лёгкие текстуры, уход за бровями и губами, создание свежего естественного макияжа.</p>
           </div>
-          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Преподаватель:</strong> визажист Светлана Инглина</div>
+          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Ведёт:</strong> визажист Светлана Инглина</div>
         </div>
         <div class="offer-card">
           <div>
@@ -117,14 +119,14 @@
             <h3 style="font-family:var(--serif);font-size:24px;margin-bottom:8px;">Практикум со стилистом</h3>
             <p style="font-size:13.5px;color:var(--text-muted);">Сочетания цветов, пропорции, базовый гардероб и поиск собственного гармоничного стиля.</p>
           </div>
-          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Преподаватель:</strong> имиджмейкер Маргарита Сирашева</div>
+          <div style="padding-top:12px;border-top:1px solid var(--line);font-size:13px;"><strong>Ведёт:</strong> имиджмейкер Маргарита Сирашева</div>
         </div>
       </div>
 
       <div class="faq-list">
         <details class="faq-item" open>
           <summary><span>1. Кто проводит занятия?</span><span>+</span></summary>
-          <p>Занятия ведут опытные специалисты в сфере красоты — косметолог Динара Новокрещенова, визажист Светлана Инглина и имиджмейкер Маргарита Сирашева.</p>
+          <p>Мастер-классы проводят специалисты салона красоты — косметолог Динара Новокрещенова, визажист Светлана Инглина и имиджмейкер Маргарита Сирашева.</p>
         </details>
         <details class="faq-item">
           <summary><span>2. Безопасна ли косметика для подростков?</span><span>+</span></summary>
@@ -138,13 +140,13 @@
     </div>
   </section>
 
-  <!-- 7. ФУТЕР САЙТА (БЕЗ ВЫМЫШЛЕННОЙ ЭМБЛЕМЫ p.) -->
+  <!-- Подвал с оригинальным логотипом POUR SOI -->
   <footer class="site-footer" id="contacts">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
           <div class="brand" style="color:#fff;margin-bottom:14px;">
-            <span class="brand__name">POUR SOI</span>
+            <img src="poursoi-logo.png" class="brand__logo brand__logo--footer" alt="POUR SOI" width="145" height="85" loading="lazy" decoding="async">
           </div>
           <p style="font-size:14px;color:rgba(248,246,242,0.75);max-width:340px;">
             Пространство красоты, ухода и восстановления в Челябинске. Время для себя в атмосфере заботы и комфорта.

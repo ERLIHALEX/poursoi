@@ -330,23 +330,17 @@
   .hero__actions .btn, .online-cta-bar .btn { width: 100%; }
 }
 
-/* Аккуратная заглушка для отсутствующих отдельных фотографий сертификатов */
-.cert-photo-frame::after {
-  content: "Фотография сертификата";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  padding: 18px;
-  color: rgba(248, 246, 242, 0.62);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-align: center;
-  pointer-events: none;
-}
-
 /* Direct image elements on certificate cards, independent of JavaScript. */
 #certPanePrograms .spa-card__media > .spa-card__image {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:2;}
 #certPanePrograms .spa-card__badges {z-index:3;}
+
+
+/* Оригинальный логотип салона: обработанная прозрачная версия предоставленного изображения. */
+.brand__logo { display: block; height: 58px; width: auto; max-width: 120px; object-fit: contain; }
+.brand__logo--footer { height: 80px; max-width: 166px; }
+.site-footer .brand { width: fit-content; }
+.cert-usage-intro { margin: 0 0 24px; font-size: 14px; line-height: 1.65; color: var(--text-muted); max-width: 850px; }
+@media (max-width: 640px) {
+  .brand__logo { height: 46px; max-width: 95px; }
+  .brand__logo--footer { height: 72px; max-width: 150px; }
+}
