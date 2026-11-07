@@ -90,16 +90,62 @@ function filterSpaCards() {
   });
 }
 
+// Сертификаты: 20 SPA-программ из единого каталога + услуги + мастер-классы + номинал.
 function switchCertMode(mode) {
+  const modes = ['programs', 'services', 'school', 'nominal'];
+  if (!modes.includes(mode)) return;
   document.querySelectorAll('#certModeTabs .tab-btn').forEach(button => {
-    button.classList.toggle('active', button.getAttribute('data-cmode') === mode);
+    const selected = button.dataset.cmode === mode;
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', selected ? 'true' : 'false');
   });
-  const programsPane = document.getElementById('certPanePrograms');
-  const nominalPane = document.getElementById('certPaneNominal');
-  const procedurePane = document.getElementById('certPaneProcedure');
-  if (programsPane) programsPane.style.display = mode === 'programs' ? 'block' : 'none';
-  if (nominalPane) nominalPane.style.display = mode === 'nominal' ? 'block' : 'none';
-  if (procedurePane) procedurePane.style.display = mode === 'procedure' ? 'block' : 'none';
+  const ids = {programs:'certPanePrograms',services:'certPaneServices',school:'certPaneSchool',nominal:'certPaneNominal'};
+  for (const [key, id] of Object.entries(ids)) {
+    const pane = document.getElementById(id);
+    if (pane) pane.hidden = key !== mode;
+  }
+}
+
+let giftSpaCategory = 'all';
+function selectGiftSpaCategory(category) {
+  const valid = ['all', 'for-her', 'for-him', 'for-two'];
+  if (!valid.includes(category)) return;
+  giftSpaCategory = category;
+  document.querySelectorAll('#certSpaTabs [data-gift-cat]').forEach(button => {
+    const selected = button.dataset.giftCat === category;
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', selected ? 'true' : 'false');
+  });
+  filterGiftSpaCards();
+}
+function filterGiftSpaCards() {
+  const search = document.getElementById('certSpaSearch');
+  const query = (search?.value || '').trim().toLocaleLowerCase('ru-RU');
+  let visible = 0;
+  const cards = document.querySelectorAll('#certSpaGrid .spa-card');
+  cards.forEach(card => {
+    const matchesCategory = giftSpaCategory === 'all' || card.dataset.cat === giftSpaCategory;
+    const matchesSearch = !query || (card.dataset.search || '').toLocaleLowerCase('ru-RU').includes(query);
+    const show = matchesCategory && matchesSearch;
+    card.classList.toggle('is-hidden', !show);
+    if (show) visible++;
+  });
+  const counter = document.getElementById('certResultsCount');
+  if (counter) counter.textContent = `Показано ${visible} из ${cards.length} программ`;
+  const empty = document.getElementById('certNoResults');
+  if (empty) empty.hidden = visible !== 0;
+}
+function selectTypedSalonService() {
+  const input = document.getElementById('certCustomServiceName');
+  if (!input) return;
+  const name = input.value.trim();
+  if (!name) {
+    input.setCustomValidity('Введите название услуги.');
+    input.reportValidity();
+    return;
+  }
+  input.setCustomValidity('');
+  selectCertGift(`Сертификат на услугу салона: ${name}`, 'Стоимость уточняется');
 }
 
 function selectCertGift(title, priceStr) {
@@ -190,6 +236,7 @@ async function submitCertificateOrder(_channel) {
   const recipient = getValue('certRecipientName');
   const greeting = getValue('certGreeting');
   const comment = getValue('certComment');
+  const specificService = getValue('certSpecificService');
 
   const lines = [
     'Здравствуйте! Заказ подарочного сертификата Pour Soi:',
@@ -199,6 +246,7 @@ async function submitCertificateOrder(_channel) {
   if (phone) lines.push('• Телефон для связи: ' + phone);
   if (recipient) lines.push('• Имя получателя: ' + recipient);
   if (greeting) lines.push('• Поздравление / пожелание: ' + greeting);
+  if (specificService) lines.push('• Уточнение услуги / процедуры: ' + specificService);
   if (comment) lines.push('• Комментарий: ' + comment);
 
   const message = lines.join('\n');
@@ -258,37 +306,34 @@ function closeModals() {
 }
 
 
-// Все фотографии SPA лежат в корне репозитория рядом с index.html.
-// Папки for_her / for_him / for_two намеренно не используются.
+// Все фотографии лежат в корне репозитория рядом с index.html.
+// Если загруженного файла нет, убираем только пустое место под фото, сохраняя карточку услуги.
 function buildSiteImageCandidates(sourceName) {
-  const cleanName = String(sourceName || '').replace(/\\/g, '/').split('/').pop();
-  const dot = cleanName.lastIndexOf('.');
-  const base = dot >= 0 ? cleanName.slice(0, dot) : cleanName;
-  const extensions = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP'];
-  const names = [...new Set([base, base.toLowerCase(), base.toUpperCase(), base.charAt(0).toUpperCase() + base.slice(1)])];
-  const candidates = [];
-  for (const name of names) {
-    for (const ext of extensions) {
-      const candidate = `./${name}${ext}`;
-      if (!candidates.includes(candidate)) candidates.push(candidate);
-    }
-  }
-  return candidates;
+  const clean = String(sourceName || '').replace(/\\/g, '/').split('/').pop();
+  const base = clean.replace(/\.(jpe?g|png|webp)$/i, '');
+  const names = [clean, `${base}.jpg`, `${base}.jpeg`, `${base}.png`, `${base}.webp`, `${base}.JPG`];
+  return [...new Set(names)].filter(Boolean);
 }
 
 function applySiteImage(img, sourceName) {
   if (img.dataset.siteImageResolved === 'true') return;
   img.dataset.siteImageResolved = 'true';
+  const media = img.closest('.spa-card__media, .spa-entry-card');
   const candidates = buildSiteImageCandidates(sourceName);
   let nextIndex = 0;
-  const tryNext = () => {
+  function tryNext() {
     if (nextIndex >= candidates.length) {
-      img.style.display = 'none';
+      if (media) media.classList.add('is-image-unavailable');
+      img.hidden = true;
       return;
     }
     img.src = candidates[nextIndex++];
-  };
+  }
   img.addEventListener('error', tryNext);
+  img.addEventListener('load', () => {
+    if (media) media.classList.remove('is-image-unavailable');
+    img.hidden = false;
+  });
   tryNext();
 }
 
@@ -334,6 +379,11 @@ document.addEventListener('DOMContentLoaded', function () {
       this.setCustomValidity('');
     });
   }
+  const customServiceInput = document.getElementById('certCustomServiceName');
+  if (customServiceInput) {
+    customServiceInput.addEventListener('input', () => customServiceInput.setCustomValidity(''));
+  }
+  if (document.getElementById('certSpaGrid')) filterGiftSpaCards();
 
   // Фото каждой карточки берём из поля img в SPA_PROGRAMS.
   attachSpaProgramImages();

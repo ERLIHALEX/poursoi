@@ -344,3 +344,78 @@
   .brand__logo { height: 46px; max-width: 95px; }
   .brand__logo--footer { height: 72px; max-width: 150px; }
 }
+
+/* Сертификаты: полный каталог программ и услуг. */
+.cert-mode-tabs { margin: 0 0 28px; padding-bottom: 19px; border-bottom: 1px solid var(--line); gap: 10px; }
+.cert-mode-tabs .tab-btn { font-weight: 600; }
+.cert-tab-count { font-size: 11px; opacity: .75; margin-left: 4px; }
+.cert-pane[hidden], #certNoResults[hidden], #customNominalBox[hidden] { display: none !important; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border:0; }
+.cert-filter-row { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-bottom: 10px; }
+.cert-spa-filters .tab-btn { padding: 9px 14px; }
+.cert-spa-filters small { font-size: 11px; opacity: .72; margin-left: 2px; }
+.cert-search-wrapper { width: clamp(250px, 30%, 350px); }
+.cert-results-count { color: var(--text-muted); font-size: 13px; margin: 14px 0 22px; }
+.cert-spa-card .spa-card__body { min-height: 260px; }
+.cert-spa-card .spa-card__desc { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.cert-spa-card .spa-card__steps { margin-bottom: 15px; }
+.cert-spa-card .spa-card__steps li { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.cert-empty-message { background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; padding: 24px; color: var(--text-muted); }
+.cert-section-intro { margin: 6px 0 26px; max-width: 760px; }
+.cert-section-intro h3 { font-family: var(--serif); font-size: clamp(24px, 3vw, 32px); font-weight: 400; margin-bottom: 8px; }
+.cert-section-intro p { color: var(--text-muted); font-size: 14px; line-height: 1.65; }
+.cert-services-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.cert-service-card { display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 220px; padding: 25px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 10px; transition: border-color .2s, transform .2s; }
+.cert-service-card:hover { border-color: var(--accent-terra); transform: translateY(-2px); }
+.cert-service-card__label { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: 10px; color: var(--accent-terra); margin-bottom: 12px; }
+.cert-service-card h3 { font-family: var(--serif); font-size: 26px; line-height: 1.1; font-weight: 500; margin-bottom: 12px; }
+.cert-service-card p { font-size: 13px; line-height: 1.55; color: var(--text-muted); }
+.cert-service-card__bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid var(--line); padding-top: 15px; }
+.cert-service-card__bottom > span { font-size: 12px; color: var(--text-muted); }
+.cert-service-card__bottom .btn { font-size: 11px; padding: 9px 11px; }
+.cert-custom-choice { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-top: 22px; border: 1px solid var(--line-strong); padding: 25px; border-radius: 10px; background: var(--bg-card); }
+.cert-custom-choice strong { font-size: 15px; }
+.cert-custom-choice p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+.cert-custom-choice__form { display: flex; gap: 8px; flex: 1 1 440px; max-width: 580px; }
+.cert-custom-choice__form input { flex: 1; min-width: 0; }
+.cert-school-choice { display: grid; grid-template-columns: minmax(260px, .85fr) minmax(0, 1.15fr); border:1px solid var(--line); border-radius: 10px; background: var(--bg-card); overflow: hidden; }
+.cert-school-choice > img { width: 100%; height: 100%; min-height: 330px; object-fit: cover; object-position: center 10%; display:block; }
+.cert-school-choice__content { padding: clamp(25px, 4vw, 52px); display:flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 18px; }
+.cert-school-choice__content h3 { font-family: var(--serif); font-size: clamp(27px, 3.2vw, 42px); line-height: 1.12; font-weight: 400; }
+.cert-school-choice__content > p { color: var(--text-muted); font-size:14px; line-height:1.65; }
+.cert-school-choice__content .cert-school-choice__price { color: var(--text-slate); font-family: var(--serif); font-size:30px; }
+.cert-school-choice__price small { display:block; font-family:var(--sans); color:var(--text-muted); font-size:12px; margin-top:4px; }
+.cert-school-choice__actions { display:flex; flex-wrap:wrap; gap:9px; }
+.cert-custom-nominal { display: flex; gap: 12px; align-items:center; width:100%; max-width:480px; background:var(--bg-card); padding:20px; border-radius:8px; border:1px solid var(--line); }
+.cert-custom-nominal .search-input { flex: 1; min-width:0; }
+.cert-order-detail label { display:block; font-size:12px; font-weight:600; margin-bottom:4px; }
+.nominal-card { font-family: var(--sans); color: var(--text-slate); }
+@media(max-width: 900px) {
+  .cert-services-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .cert-school-choice { grid-template-columns:1fr; }
+  .cert-school-choice > img { max-height:340px; }
+}
+@media(max-width: 640px) {
+  .cert-mode-tabs .tab-btn { flex: 1 1 calc(50% - 8px); padding: 11px 8px; font-size: 12px; }
+  .cert-filter-row { align-items:stretch; }
+  .cert-search-wrapper { width:100%; }
+  .cert-spa-filters { width:100%; display:grid; grid-template-columns:repeat(2,1fr); }
+  .cert-spa-filters .tab-btn { padding: 10px 7px; }
+  .cert-services-grid { grid-template-columns: 1fr; }
+  .cert-custom-choice__form { flex-direction:column; flex-basis:100%; }
+  .cert-custom-choice__form .btn { width:100%; }
+  .cert-custom-nominal { flex-direction:column; align-items:stretch; }
+  .cert-school-choice > img { min-height:235px; height:235px; }
+  .cert-school-choice__actions .btn { width:100%; }
+}
+
+/* Финальная проверка медиа: вместо пустых прямоугольников скрываем отсутствующие фото. */
+.spa-card__media.is-image-unavailable { display: none !important; }
+.spa-entry-card.is-image-unavailable img { display: none !important; }
+.hero__gallery-col.is-image-unavailable { display: none !important; }
+.hero__box.hero__box--no-media { grid-template-columns: 1fr; }
+.school-poster-card__top-photo.is-image-unavailable { display: none !important; }
+.brand__logo[hidden], .brand__fallback-text[hidden] { display: none !important; }
+.brand__fallback-text { color: #e8cc86; font-family: Georgia,serif; font-size: 22px; letter-spacing: 0.15em; white-space: nowrap; }
+.brand__fallback-text--footer { font-size: 26px; }
+#certPanePrograms .spa-card__media > .spa-card__image[hidden] {display: none !important;}

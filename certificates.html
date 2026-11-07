@@ -31,7 +31,7 @@
   <header class="site-header">
     <div class="container site-header__inner">
       <a href="index.html" class="brand">
-        <img src="poursoi-logo.png" class="brand__logo" alt="POUR SOI" width="116" height="68" loading="eager" decoding="async">
+        <img src="poursoi-logo.png" class="brand__logo" alt="POUR SOI" width="116" height="68" loading="eager" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand__fallback-text" hidden>POUR SOI</span>
       </a>
       <div class="header-actions">
         <a href="certificates.html" class="btn btn--terra" style="padding:10px 18px;font-size:11.5px;">Купить сертификат</a>
@@ -53,7 +53,7 @@
             <h1 class="h1">Подарите время <em>для себя.</em></h1>
             <p class="hero__lead">
               Подарочный сертификат Pour Soi можно оформить на услуги салона красоты, SPA-программы и практические мастер-классы Школы красоты для девочек.<br><br>
-              Выберите услугу, готовую SPA-программу или сумму сертификата. Администратор поможет с оформлением и уточнит детали использования.
+              Выберите SPA-программу, услугу салона, мастер-классы или номинал сертификата. Администратор поможет с оформлением и уточнит детали использования.
             </p>
             <div class="hero__actions">
               <a href="#cert-choose" class="btn btn--terra">Выбрать сертификат &darr;</a>
@@ -68,7 +68,7 @@
         </div>
         <div class="hero__gallery-col">
           <div class="hero__visual">
-            <img src="serteficate2.jpg" onerror="this.style.display='none'" alt="Подарочный сертификат Pour Soi" class="hero__slide-layer" style="object-position: 50% 45%;">
+            <img src="serteficate2.jpg" onerror="this.closest('.hero__gallery-col').classList.add('is-image-unavailable');this.closest('.hero__box').classList.add('hero__box--no-media')" alt="Подарочный сертификат Pour Soi" class="hero__slide-layer" style="object-position: 50% 45%;">
           </div>
         </div>
       </div>
@@ -79,209 +79,594 @@
     <div class="container">
       <div class="sec-head">
         <div>
-          <span class="eyebrow">Три удобных формата подарка</span>
-          <h2 class="h2">Выберите свой вариант <em>сертификата.</em></h2>
+          <span class="eyebrow">Все варианты подарка</span>
+          <h2 class="h2">Выберите свой <em>сертификат.</em></h2>
+          <p class="cert-usage-intro">Выберите SPA-программу, направление услуг салона или мастер-классы. При выборе услуги или собственного номинала детали и стоимость подтверждает администратор.</p>
         </div>
       </div>
-
-      <div class="catalog-controls">
-        <p class="cert-usage-intro">Сертификат можно выбрать на услуги салона красоты, SPA-программы или мастер-классы Школы красоты. Номинал и конкретное направление уточняются при оформлении.</p>
-        <div class="tabs-row" id="certModeTabs">
-          <button type="button" class="tab-btn active" data-cmode="programs" onclick="switchCertMode('programs')">Готовые подарочные программы</button>
-          <button type="button" class="tab-btn" data-cmode="nominal" onclick="switchCertMode('nominal')">Сертификат на сумму</button>
-          <button type="button" class="tab-btn" data-cmode="procedure" onclick="switchCertMode('procedure')">На услугу или мастер-класс</button>
-        </div>
+      <div class="tabs-row cert-mode-tabs" id="certModeTabs" role="group" aria-label="Тип сертификата">
+        <button type="button" class="tab-btn active" data-cmode="programs" onclick="switchCertMode('programs')">Все SPA-программы <span class="cert-tab-count">20</span></button>
+        <button type="button" class="tab-btn" data-cmode="services" onclick="switchCertMode('services')">Услуги салона</button>
+        <button type="button" class="tab-btn" data-cmode="school" onclick="switchCertMode('school')">Мастер-классы</button>
+        <button type="button" class="tab-btn" data-cmode="nominal" onclick="switchCertMode('nominal')">Сертификат на сумму</button>
       </div>
 
-      <div id="certPanePrograms">
-        <div class="spa-grid">
-                    <article class="spa-card" data-id="her-1">
+      <div id="certPanePrograms" class="cert-pane">
+        <div class="cert-filter-row">
+          <div class="tabs-row cert-spa-filters" id="certSpaTabs" role="group" aria-label="Категория SPA-программ">
+            <button type="button" class="tab-btn active" data-gift-cat="all" onclick="selectGiftSpaCategory('all')">Все 20</button>
+            <button type="button" class="tab-btn" data-gift-cat="for-her" onclick="selectGiftSpaCategory('for-her')">Для неё <small>11</small></button>
+            <button type="button" class="tab-btn" data-gift-cat="for-him" onclick="selectGiftSpaCategory('for-him')">Для него <small>6</small></button>
+            <button type="button" class="tab-btn" data-gift-cat="for-two" onclick="selectGiftSpaCategory('for-two')">Для двоих <small>3</small></button>
+          </div>
+          <label class="cert-search-wrapper"><span class="visually-hidden">Найти SPA-программу</span><input id="certSpaSearch" type="search" class="search-input" placeholder="Найти программу по названию…" oninput="filterGiftSpaCards()" autocomplete="off"></label>
+        </div>
+        <p class="cert-results-count" id="certResultsCount" aria-live="polite">Показано 20 из 20 программ</p>
+        <div class="spa-grid" id="certSpaGrid">
+          <article class="spa-card cert-spa-card" data-id="her-1" data-cat="for-her" data-search="«абсолютное восстановление» для неё когда хочется выдохнуть, снять напряжение и восстановить силы.">
             <div class="spa-card__media">
-              <img class="spa-card__image" src="her1.jpg" alt="Фотография SPA-программы" loading="lazy" decoding="async" data-site-image-resolved="true">
-                            <div class="spa-card__badges">
-                <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);">Небольшой знак внимания</span>
-                <span class="badge badge--dark">60 минут</span>
+              <img class="spa-card__image" src="her1.jpg" alt="«Абсолютное восстановление» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">60 минут</span>
               </div>
             </div>
             <div class="spa-card__body">
               <h3 class="spa-card__title">«Абсолютное восстановление»</h3>
               <p class="spa-card__desc">Когда хочется выдохнуть, снять напряжение и восстановить силы.</p>
-              <div class="spa-card__steps-title">Входит в подарок:</div>
-              <ul class="spa-card__steps">
-                                  <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
-                                  <li>Массаж всего тела на выбор: глубоко расслабляющий или тонизирующий — 60 минут</li>
-                                  <li>Завершающая церемония чаепития</li>
-                              </ul>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Массаж всего тела на выбор: глубоко расслабляющий или тонизирующий — 60 минут</li>
+              </ul>
               <div class="spa-card__foot">
-                <div>
-                  <span class="spa-card__price-lbl">Стоимость сертификата</span>
-                  <span class="spa-card__price-val">3 500 ₽</span>
-                </div>
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">3 500 ₽</span></div>
                 <div class="spa-card__btns">
                   <button type="button" class="btn btn--outline" onclick="openDetail('her-1')">Состав</button>
-                  <button type="button" class="btn btn--terra" onclick="selectCertGift('Сертификат на программу ' + '«Абсолютное восстановление»', '3 500 ₽')">Выбрать</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Абсолютное восстановление» (Для неё)&quot;, &quot;3 500 ₽&quot;)">Выбрать</button>
                 </div>
               </div>
             </div>
           </article>
-                    <article class="spa-card" data-id="her-2">
+          <article class="spa-card cert-spa-card" data-id="her-2" data-cat="for-her" data-search="«тайский баланс» для неё мягкий ритуал для тех, кто хочет отпустить повседневные заботы и уделить время себе.">
             <div class="spa-card__media">
-              <img class="spa-card__image" src="her2.jpg" alt="Фотография SPA-программы" loading="lazy" decoding="async" data-site-image-resolved="true">
-                            <div class="spa-card__badges">
-                <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);">Подарок человеку, которому хочется отдохнуть</span>
-                <span class="badge badge--dark">60 минут</span>
+              <img class="spa-card__image" src="her2.jpg" alt="«Тайский Баланс» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">60 минут</span>
               </div>
             </div>
             <div class="spa-card__body">
               <h3 class="spa-card__title">«Тайский Баланс»</h3>
               <p class="spa-card__desc">Мягкий ритуал для тех, кто хочет отпустить повседневные заботы и уделить время себе.</p>
-              <div class="spa-card__steps-title">Входит в подарок:</div>
-              <ul class="spa-card__steps">
-                                  <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
-                                  <li>Тайский релакс-массаж тела — 60 минут</li>
-                                  <li>Церемония чаепития</li>
-                              </ul>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Тайский релакс-массаж тела — 60 минут</li>
+              </ul>
               <div class="spa-card__foot">
-                <div>
-                  <span class="spa-card__price-lbl">Стоимость сертификата</span>
-                  <span class="spa-card__price-val">4 000 ₽</span>
-                </div>
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">4 000 ₽</span></div>
                 <div class="spa-card__btns">
                   <button type="button" class="btn btn--outline" onclick="openDetail('her-2')">Состав</button>
-                  <button type="button" class="btn btn--terra" onclick="selectCertGift('Сертификат на программу ' + '«Тайский Баланс»', '4 000 ₽')">Выбрать</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Тайский Баланс» (Для неё)&quot;, &quot;4 000 ₽&quot;)">Выбрать</button>
                 </div>
               </div>
             </div>
           </article>
-                    <article class="spa-card" data-id="her-10">
+          <article class="spa-card cert-spa-card" data-id="her-3" data-cat="for-her" data-search="спа-программа «дух леса» для неё ароматы хвои и кедра, тепло полотенец и целая череда приятных ощущений — для глубокого отдыха.">
             <div class="spa-card__media">
-              <img class="spa-card__image" src="her10.jpg" alt="Фотография SPA-программы" loading="lazy" decoding="async" data-site-image-resolved="true">
-                            <div class="spa-card__badges">
-                <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);">Для любителей комплексного ухода</span>
-                <span class="badge badge--dark">180 минут</span>
+              <img class="spa-card__image" src="her3.jpg" alt="Спа-программа «Дух Леса» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">90 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">Спа-программа «Дух Леса»</h3>
+              <p class="spa-card__desc">Ароматы хвои и кедра, тепло полотенец и целая череда приятных ощущений — для глубокого отдыха.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Приветственный ритуал с горячими полотенцами и масляный массаж стоп</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">5 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-3')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу Спа-программа «Дух Леса» (Для неё)&quot;, &quot;5 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-4" data-cat="for-her" data-search="спа программа «кокон стройности» для неё бодрящее «холодное» обертывание с ярким ароматом мяты и букета эфирных масел за короткий срок выведут лишнюю жидкость и токсины, подтянут рельеф кожи.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her4.jpg" alt="Спа программа «Кокон Стройности» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">Спа программа «Кокон Стройности»</h3>
+              <p class="spa-card__desc">Бодрящее «холодное» обертывание с ярким ароматом мяты и букета эфирных масел за короткий срок выведут лишнюю жидкость и токсины, подтянут рельеф кожи.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Первое погружение в отдых: аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Пилинг тела для сияющей и гладкой кожи</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">5 500 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-4')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу Спа программа «Кокон Стройности» (Для неё)&quot;, &quot;5 500 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-5" data-cat="for-her" data-search="спа-программа «молодильное яблочко» для неё помните ощущение после настоящего выходного, когда хочется улыбнуться своему отражению? два часа тепла, нежных прикосновений и ухода за кожей. можно закрыть глаза, забыть о расписании и просто наслаждаться.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her5.jpg" alt="Спа-программа «Молодильное яблочко» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">Спа-программа «Молодильное яблочко»</h3>
+              <p class="spa-card__desc">Помните ощущение после настоящего выходного, когда хочется улыбнуться своему отражению? Два часа тепла, нежных прикосновений и ухода за кожей. Можно закрыть глаза, забыть о расписании и просто наслаждаться.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Тёплое начало — приветственный ритуал с горячими полотенцами</li>
+                    <li>Обновление кожи — пилинг-массаж всего тела для ощущения гладкости</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">5 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-5')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу Спа-программа «Молодильное яблочко» (Для неё)&quot;, &quot;5 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-6" data-cat="for-her" data-search="спа-программа «райский остров» для неё ваш маленький отпуск среди повседневных забот. нежный аромат мякоти кокоса, мягкое тепло кокосового масла и расслабляющие прикосновения — два часа, чтобы замедлиться и насладиться заботой о себе.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her6.jpg" alt="Спа-программа «Райский остров» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">Спа-программа «Райский остров»</h3>
+              <p class="spa-card__desc">Ваш маленький отпуск среди повседневных забот. Нежный аромат мякоти кокоса, мягкое тепло кокосового масла и расслабляющие прикосновения — два часа, чтобы замедлиться и насладиться заботой о себе.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Тёплое начало — приветственный ритуал с горячими полотенцами подарит ощущение уюта.</li>
+                    <li>Обновление кожи — ароматное кокосовое скрабирование всего тела подарит коже мягкость и гладкость.</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">5 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-6')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу Спа-программа «Райский остров» (Для неё)&quot;, &quot;5 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-7" data-cat="for-her" data-search="спа-программа «сахасрара — 7-я чакра» для неё позвольте себе замедлиться и посвятить два часа только себе. тепло, нежные ароматы и заботливые прикосновения помогут отпустить напряжение и насладиться отдыхом.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her7.jpg" alt="Спа-программа «Сахасрара — 7-я чакра» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">Спа-программа «Сахасрара — 7-я чакра»</h3>
+              <p class="spa-card__desc">Позвольте себе замедлиться и посвятить два часа только себе. Тепло, нежные ароматы и заботливые прикосновения помогут отпустить напряжение и насладиться отдыхом.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромазнакомство — выберите эфирное масло, аромат которого созвучен вашему настроению.</li>
+                    <li>Тёплое начало — приветственный ритуал с горячими полотенцами подарит ощущение уюта.</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">6 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-7')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу Спа-программа «Сахасрара — 7-я чакра» (Для неё)&quot;, &quot;6 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-8" data-cat="for-her" data-search="нейро-спа «голубой лотос» для неё для тех, кто устал быть в постоянном напряжении и хочет наконец выдохнуть. ароматы, неспешные прикосновения и уход за телом помогают отвлечься от потока мыслей, почувствовать спокойствие и уделить внимание коже. два часа, в которые можно никуда не торопиться.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her8.jpg" alt="НЕЙРО-спа «ГОЛУБОЙ ЛОТОС» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">НЕЙРО-спа «ГОЛУБОЙ ЛОТОС»</h3>
+              <p class="spa-card__desc">Для тех, кто устал быть в постоянном напряжении и хочет наконец выдохнуть. Ароматы, неспешные прикосновения и уход за телом помогают отвлечься от потока мыслей, почувствовать спокойствие и уделить внимание коже. Два часа, в которые можно никуда не торопиться.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Глубокое отшелушивание для ощущения гладкой кожи</li>
+                    <li>Увлажняющая маска для тела с цитоплазмой гигантских красных водорослей</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">6 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-8')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу НЕЙРО-спа «ГОЛУБОЙ ЛОТОС» (Для неё)&quot;, &quot;6 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-9" data-cat="for-her" data-search="женская перезагрузка «9 прикосновений» для неё время замедлиться и переключить внимание на себя. программа сочетает массаж тела, стоп, лица и головы, чтобы отдых ощущался с первых минут до завершающего чаепития.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her9.jpg" alt="Женская перезагрузка «9 прикосновений» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">Женская перезагрузка «9 прикосновений»</h3>
+              <p class="spa-card__desc">Время замедлиться и переключить внимание на себя. Программа сочетает массаж тела, стоп, лица и головы, чтобы отдых ощущался с первых минут до завершающего чаепития.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Тайский релакс-массаж тела — 60 минут</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">7 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('her-9')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу Женская перезагрузка «9 прикосновений» (Для неё)&quot;, &quot;7 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="her-10" data-cat="for-her" data-search="«спа выходной» для неё для тех, кому хочется поставить дела на паузу и провести 2,5 часа в заботе о себе. здесь не нужно выбирать между уходом за лицом и отдыхом для тела: в программе с вами работают 2 мастера: косметолог и массажист.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="her10.jpg" alt="«СПА Выходной» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">180 минут</span>
               </div>
             </div>
             <div class="spa-card__body">
               <h3 class="spa-card__title">«СПА Выходной»</h3>
               <p class="spa-card__desc">Для тех, кому хочется поставить дела на паузу и провести 2,5 часа в заботе о себе. Здесь не нужно выбирать между уходом за лицом и отдыхом для тела: в программе с вами работают 2 мастера: косметолог и массажист.</p>
-              <div class="spa-card__steps-title">Входит в подарок:</div>
-              <ul class="spa-card__steps">
-                                  <li>Первое погружение в отдых: аромознакомство и индивидуальный выбор эфирного масла</li>
-                                  <li>Время для сияния — уход от косметолога и массаж лица, 60 минут</li>
-                                  <li>Отдых для всего тела — массаж тела 60 минут</li>
-                                  <li>Завершающий уход — бандажное обёртывание для тела</li>
-                              </ul>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Первое погружение в отдых: аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Время для сияния — уход от косметолога и массаж лица, 60 минут</li>
+              </ul>
               <div class="spa-card__foot">
-                <div>
-                  <span class="spa-card__price-lbl">Стоимость сертификата</span>
-                  <span class="spa-card__price-val">6 800 ₽</span>
-                </div>
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">6 800 ₽</span></div>
                 <div class="spa-card__btns">
                   <button type="button" class="btn btn--outline" onclick="openDetail('her-10')">Состав</button>
-                  <button type="button" class="btn btn--terra" onclick="selectCertGift('Сертификат на программу ' + '«СПА Выходной»', '6 800 ₽')">Выбрать</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «СПА Выходной» (Для неё)&quot;, &quot;6 800 ₽&quot;)">Выбрать</button>
                 </div>
               </div>
             </div>
           </article>
-                    <article class="spa-card" data-id="her-11">
+          <article class="spa-card cert-spa-card" data-id="her-11" data-cat="for-her" data-search="«королевский ритуал в 4 руки» для неё особенный подарок: два мастера одновременно заботятся о вашем комфорте, пока вы полностью погружаетесь в отдых.">
             <div class="spa-card__media">
-              <img class="spa-card__image" src="her11.jpg" alt="Фотография SPA-программы" loading="lazy" decoding="async" data-site-image-resolved="true">
-                            <div class="spa-card__badges">
-                <span class="badge badge--light" style="background:var(--accent-soft);color:var(--accent-terra);">Для важного события или юбилея</span>
-                <span class="badge badge--dark">90 минут</span>
+              <img class="spa-card__image" src="her11.jpg" alt="«Королевский ритуал в 4 руки» — Для неё" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для неё</span><span class="badge badge--dark">90 минут</span>
               </div>
             </div>
             <div class="spa-card__body">
               <h3 class="spa-card__title">«Королевский ритуал в 4 руки»</h3>
               <p class="spa-card__desc">Особенный подарок: два мастера одновременно заботятся о вашем комфорте, пока вы полностью погружаетесь в отдых.</p>
-              <div class="spa-card__steps-title">Входит в подарок:</div>
-              <ul class="spa-card__steps">
-                                  <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
-                                  <li>Программа для стоп со скрабом, питательной маской и горячими полотенцами</li>
-                                  <li>Рефлекторный массаж стоп</li>
-                                  <li>Нейромассаж тела в четыре руки — 60 минут</li>
-                              </ul>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Программа для стоп со скрабом, питательной маской и горячими полотенцами</li>
+              </ul>
               <div class="spa-card__foot">
-                <div>
-                  <span class="spa-card__price-lbl">Стоимость сертификата</span>
-                  <span class="spa-card__price-val">8 000 ₽</span>
-                </div>
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">8 000 ₽</span></div>
                 <div class="spa-card__btns">
                   <button type="button" class="btn btn--outline" onclick="openDetail('her-11')">Состав</button>
-                  <button type="button" class="btn btn--terra" onclick="selectCertGift('Сертификат на программу ' + '«Королевский ритуал в 4 руки»', '8 000 ₽')">Выбрать</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Королевский ритуал в 4 руки» (Для неё)&quot;, &quot;8 000 ₽&quot;)">Выбрать</button>
                 </div>
               </div>
             </div>
           </article>
-                  </div>
+          <article class="spa-card cert-spa-card" data-id="him-1" data-cat="for-him" data-search="«абсолютное восстановление» для него снять напряжение, восстановить силы и вернуться в рабочий ритм.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="him1.jpg" alt="«Абсолютное восстановление» — Для него" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для него</span><span class="badge badge--dark">60 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Абсолютное восстановление»</h3>
+              <p class="spa-card__desc">Снять напряжение, восстановить силы и вернуться в рабочий ритм.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и индивидуальный выбор эфирного масла</li>
+                    <li>Массаж всего тела на выбор: расслабляющий или тонизирующий</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">3 500 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('him-1')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Абсолютное восстановление» (Для него)&quot;, &quot;3 500 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="him-2" data-cat="for-him" data-search="«тайский баланс» для него мужской ритуал для глубокого расслабления и снятия зажимов.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="him2.jpg" alt="«Тайский Баланс» — Для него" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для него</span><span class="badge badge--dark">60 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Тайский Баланс»</h3>
+              <p class="spa-card__desc">Мужской ритуал для глубокого расслабления и снятия зажимов.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и выбор эфирного масла</li>
+                    <li>Тайский релакс-массаж тела</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">4 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('him-2')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Тайский Баланс» (Для него)&quot;, &quot;4 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="him-3" data-cat="for-him" data-search="«дух леса» для него ритуал глубокого восстановления с ароматами хвои и кедра.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="him3.jpg" alt="«Дух Леса» — Для него" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для него</span><span class="badge badge--dark">90 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Дух Леса»</h3>
+              <p class="spa-card__desc">Ритуал глубокого восстановления с ароматами хвои и кедра.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство</li>
+                    <li>Приветственный ритуал горячими полотенцами и масляный массаж стоп</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">5 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('him-3')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Дух Леса» (Для него)&quot;, &quot;5 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="him-4" data-cat="for-him" data-search="«спорт» для него интенсивная проработка мышц после физических нагрузок.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="him4.jpg" alt="«Спорт» — Для него" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для него</span><span class="badge badge--dark">90 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Спорт»</h3>
+              <p class="spa-card__desc">Интенсивная проработка мышц после физических нагрузок.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство</li>
+                    <li>Классический массаж тела: снятие мышечного напряжения</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">5 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('him-4')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Спорт» (Для него)&quot;, &quot;5 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="him-5" data-cat="for-him" data-search="«энергия лидера» для него двухчасовой мужской комплекс: массаж тела, стоп, головы и уход за лицом.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="him5.jpg" alt="«Энергия Лидера» — Для него" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для него</span><span class="badge badge--dark">120 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Энергия Лидера»</h3>
+              <p class="spa-card__desc">Двухчасовой мужской комплекс: массаж тела, стоп, головы и уход за лицом.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и приветственный ритуал</li>
+                    <li>Рефлекторный массаж ног</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">8 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('him-5')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Энергия Лидера» (Для него)&quot;, &quot;8 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="him-6" data-cat="for-him" data-search="«королевский ритуал в 4 руки» для него синхронная работа двух мастеров для глубокого отдыха.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="him6.jpg" alt="«Королевский ритуал в 4 руки» — Для него" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для него</span><span class="badge badge--dark">90 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Королевский ритуал в 4 руки»</h3>
+              <p class="spa-card__desc">Синхронная работа двух мастеров для глубокого отдыха.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство и программа для стоп</li>
+                    <li>Рефлекторный массаж стоп</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">8 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('him-6')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Королевский ритуал в 4 руки» (Для него)&quot;, &quot;8 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="two-1" data-cat="for-two" data-search="«прикосновение» для двоих часовой парный ритуал для синхронного отдыха вдвоём.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="us1.jpg" alt="«Прикосновение» — Для двоих" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для двоих</span><span class="badge badge--dark">60 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Прикосновение»</h3>
+              <p class="spa-card__desc">Часовой парный ритуал для синхронного отдыха вдвоём.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство: выбор эфирных масел</li>
+                    <li>Релакс-массаж тела для двоих</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">6 500 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('two-1')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Прикосновение» (Для двоих)&quot;, &quot;6 500 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="two-2" data-cat="for-two" data-search="«в унисон» для двоих полтора часа неспешного расслабления для пары или близких.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="us2.jpg" alt="«В Унисон» — Для двоих" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для двоих</span><span class="badge badge--dark">90 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«В Унисон»</h3>
+              <p class="spa-card__desc">Полтора часа неспешного расслабления для пары или близких.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство: выбор эфирных масел</li>
+                    <li>Продолжительный релакс-массаж тела</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">9 000 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('two-2')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «В Унисон» (Для двоих)&quot;, &quot;9 000 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="spa-card cert-spa-card" data-id="two-3" data-cat="for-two" data-search="«для двоих» для двоих расширенный парный ритуал с уходом за стопами, телом, лицом и головой.">
+            <div class="spa-card__media">
+              <img class="spa-card__image" src="us3.jpg" alt="«Для Двоих» — Для двоих" loading="lazy" decoding="async">
+              <div class="spa-card__badges">
+                <span class="badge badge--light">Для двоих</span><span class="badge badge--dark">90 минут</span>
+              </div>
+            </div>
+            <div class="spa-card__body">
+              <h3 class="spa-card__title">«Для Двоих»</h3>
+              <p class="spa-card__desc">Расширенный парный ритуал с уходом за стопами, телом, лицом и головой.</p>
+              <div class="spa-card__steps-title">В программе:</div>
+              <ul class="spa-card__steps">                    <li>Аромознакомство</li>
+                    <li>Приветственный ритуал и скрабирование ног</li>
+              </ul>
+              <div class="spa-card__foot">
+                <div><span class="spa-card__price-lbl">Стоимость программы</span><span class="spa-card__price-val">10 500 ₽</span></div>
+                <div class="spa-card__btns">
+                  <button type="button" class="btn btn--outline" onclick="openDetail('two-3')">Состав</button>
+                  <button type="button" class="btn btn--terra" onclick="selectCertGift(&quot;Сертификат на SPA-программу «Для Двоих» (Для двоих)&quot;, &quot;10 500 ₽&quot;)">Выбрать</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p class="cert-empty-message" id="certNoResults" hidden>По вашему запросу программ не найдено. Попробуйте изменить поиск.</p>
       </div>
 
-      <div id="certPaneNominal" style="display:none;">
+      <div id="certPaneServices" class="cert-pane" hidden>
+        <div class="cert-section-intro">
+          <h3>Сертификат на услуги салона</h3>
+          <p>Выберите направление или укажите точную процедуру. Администратор подтвердит доступность услуги и актуальную стоимость перед оформлением сертификата.</p>
+        </div>
+        <div class="cert-services-grid">
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Косметология</h3>
+              <p>Уходы и косметологические процедуры для лица.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Косметология&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Маникюр</h3>
+              <p>Уход за ногтями рук; конкретный вариант уточняется при оформлении.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Маникюр&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Педикюр</h3>
+              <p>Уход за ногтями и стопами; конкретный вариант уточняется при оформлении.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Педикюр&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Массаж</h3>
+              <p>Массажные процедуры салона; вид и продолжительность уточняются.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Массаж&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Перманентный макияж</h3>
+              <p>Процедуры перманентного макияжа; детали согласовываются с администратором.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Перманентный макияж&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Коллагенарий</h3>
+              <p>Посещение коллагенария; доступные сеансы уточняются.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Коллагенарий&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+          <article class="cert-service-card">
+            <div class="cert-service-card__upper">
+              <span class="cert-service-card__label">УСЛУГИ САЛОНА</span>
+              <h3>Брови и ресницы</h3>
+              <p>Процедуры для бровей и ресниц; конкретную услугу укажите в заявке.</p>
+            </div>
+            <div class="cert-service-card__bottom"><span>Стоимость уточняется</span><button type="button" class="btn btn--outline" onclick="selectCertGift(&quot;Сертификат на услугу салона: Брови и ресницы&quot;, &quot;Стоимость уточняется&quot;)">Выбрать</button></div>
+          </article>
+        </div>
+        <div class="cert-custom-choice">
+          <div><strong>Знаете название конкретной процедуры?</strong><p>Укажите её — без выбора общего направления.</p></div>
+          <div class="cert-custom-choice__form">
+            <input id="certCustomServiceName" class="search-input" type="text" placeholder="Например, название процедуры из прайса" aria-label="Название конкретной услуги">
+            <button type="button" class="btn btn--terra" onclick="selectTypedSalonService()">Выбрать услугу</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="certPaneSchool" class="cert-pane" hidden>
+        <div class="cert-school-choice">
+          <img src="school_poster.jpg" alt="Практические мастер-классы для девочек в Pour Soi" loading="lazy" decoding="async">
+          <div class="cert-school-choice__content">
+            <span class="eyebrow">Практические мастер-классы, 10–15 лет</span>
+            <h3>Подарите знакомство с миром красоты.</h3>
+            <p>Три практических мастер-класса со специалистами салона — косметологом, визажистом и стилистом. Можно подарить знакомство с уходом за собой и миром красоты.</p>
+            <p class="cert-school-choice__price">6 500 ₽ <small>за три мастер-класса</small></p>
+            <div class="cert-school-choice__actions">
+              <button type="button" class="btn btn--terra" onclick="selectCertGift('Сертификат на три практических мастер-класса для девочек', '6 500 ₽')">Подарить мастер-классы</button>
+              <a href="school.html" class="btn btn--outline">Подробнее о формате</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="certPaneNominal" class="cert-pane" hidden>
+        <div class="cert-section-intro"><h3>Подарочный сертификат на сумму</h3><p>Получатель сможет выбрать интересующее направление. Условия использования уточняются при оформлении у администратора.</p></div>
         <div class="nominal-grid">
-          <div class="nominal-card" onclick="selectCertGift('Сертификат на сумму 3 500 ₽', '3 500 ₽')">
-            <span class="nominal-card__val">3 500 ₽</span>
-            <span class="nominal-card__lbl">Для услуг и мастер-классов</span>
-          </div>
-          <div class="nominal-card" onclick="selectCertGift('Сертификат на сумму 5 000 ₽', '5 000 ₽')">
-            <span class="nominal-card__val">5 000 ₽</span>
-            <span class="nominal-card__lbl">Для услуг и мастер-классов</span>
-          </div>
-          <div class="nominal-card" onclick="selectCertGift('Сертификат на сумму 7 000 ₽', '7 000 ₽')">
-            <span class="nominal-card__val">7 000 ₽</span>
-            <span class="nominal-card__lbl">Для услуг и мастер-классов</span>
-          </div>
-          <div class="nominal-card" onclick="selectCertGift('Сертификат на сумму 10 500 ₽', '10 500 ₽')">
-            <span class="nominal-card__val">10 500 ₽</span>
-            <span class="nominal-card__lbl">Для услуг и мастер-классов</span>
-          </div>
-          <div class="nominal-card" onclick="document.getElementById('customNominalBox').style.display='flex'">
-            <span class="nominal-card__val">Своя сумма</span>
-            <span class="nominal-card__lbl">Любой номинал</span>
-          </div>
+          <button type="button" class="nominal-card" onclick="selectCertGift('Сертификат на сумму 3 500 ₽', '3 500 ₽')"><span class="nominal-card__val">3 500 ₽</span><span class="nominal-card__lbl">Подарочный номинал</span></button>
+          <button type="button" class="nominal-card" onclick="selectCertGift('Сертификат на сумму 5 000 ₽', '5 000 ₽')"><span class="nominal-card__val">5 000 ₽</span><span class="nominal-card__lbl">Подарочный номинал</span></button>
+          <button type="button" class="nominal-card" onclick="selectCertGift('Сертификат на сумму 7 000 ₽', '7 000 ₽')"><span class="nominal-card__val">7 000 ₽</span><span class="nominal-card__lbl">Подарочный номинал</span></button>
+          <button type="button" class="nominal-card" onclick="selectCertGift('Сертификат на сумму 10 500 ₽', '10 500 ₽')"><span class="nominal-card__val">10 500 ₽</span><span class="nominal-card__lbl">Подарочный номинал</span></button>
+          <button type="button" class="nominal-card" onclick="document.getElementById('customNominalBox').hidden=false;document.getElementById('customNominalInput').focus()"><span class="nominal-card__val">Своя сумма</span><span class="nominal-card__lbl">Указать номинал</span></button>
         </div>
-        <div id="customNominalBox" style="display:none;gap:10px;align-items:center;max-width:460px;background:var(--bg-card);padding:16px;border-radius:8px;border:1px solid var(--line);">
-          <input type="text" id="customNominalInput" class="search-input" placeholder="Укажите сумму в ₽ (например: 6 000 ₽)">
-          <button type="button" class="btn btn--terra" onclick="applyCustomNominal()">Оформить</button>
-        </div>
-      </div>
-
-      <div id="certPaneProcedure" style="display:none;">
-        <div class="offers-grid">
-          <div class="offer-card">
-            <div>
-              <h3 style="font-family:var(--serif);font-size:23px;margin-bottom:6px;">Расслабляющий массаж тела</h3>
-              <p style="font-size:13.5px;color:var(--text-muted);">60 или 90 минут бережной проработки мышц с натуральными аромамаслами.</p>
-            </div>
-            <button type="button" class="btn btn--outline" onclick="selectCertGift('Сертификат на процедуру: Расслабляющий массаж тела', 'от 3 500 ₽')">Выбрать в подарок</button>
-          </div>
-          <div class="offer-card">
-            <div>
-              <h3 style="font-family:var(--serif);font-size:23px;margin-bottom:6px;">Тайский массаж</h3>
-              <p style="font-size:13.5px;color:var(--text-muted);">Глубокое снятие зажимов, восстановление гибкости и внутреннего баланса.</p>
-            </div>
-            <button type="button" class="btn btn--outline" onclick="selectCertGift('Сертификат на процедуру: Тайский массаж', '4 000 ₽')">Выбрать в подарок</button>
-          </div>
-          <div class="offer-card">
-            <div>
-              <h3 style="font-family:var(--serif);font-size:23px;margin-bottom:6px;">Уход за лицом у косметолога</h3>
-              <p style="font-size:13.5px;color:var(--text-muted);">Индивидуальный уход по типу кожи, лифтинг-программа или скульптурный массаж лица.</p>
-            </div>
-            <button type="button" class="btn btn--outline" onclick="selectCertGift('Сертификат на процедуру: Уход за лицом у косметолога', 'от 3 000 ₽')">Выбрать в подарок</button>
-          </div>
-          <div class="offer-card">
-            <div>
-              <h3 style="font-family:var(--serif);font-size:23px;margin-bottom:6px;">Мастер-классы Школы красоты</h3>
-              <p style="font-size:13.5px;color:var(--text-muted);">Три практических мастер-класса для девочек 10–15 лет с косметологом, визажистом и стилистом. Подробности — в <a href="school.html">разделе школы</a>.</p>
-            </div>
-            <button type="button" class="btn btn--outline" onclick="selectCertGift('Сертификат на мастер-классы Школы красоты для девочек', '6 500 ₽')">Подарить мастер-классы</button>
-          </div>
-          <div class="offer-card">
-            <div>
-              <h3 style="font-family:var(--serif);font-size:23px;margin-bottom:6px;">Любая услуга салона красоты</h3>
-              <p style="font-size:13.5px;color:var(--text-muted);">Маникюр и педикюр, косметология, массаж, перманентный макияж, коллагенарий, брови и ресницы. Выбранную услугу можно указать в комментарии к заявке.</p>
-            </div>
-            <button type="button" class="btn btn--outline" onclick="selectCertGift('Сертификат на услугу салона красоты на выбор', 'Стоимость уточняется')">Выбрать услугу</button>
-          </div>
+        <div id="customNominalBox" class="cert-custom-nominal" hidden>
+          <input type="text" id="customNominalInput" class="search-input" placeholder="Укажите сумму в ₽ (например, 6 000)">
+          <button type="button" class="btn btn--terra" onclick="applyCustomNominal()">Выбрать сумму</button>
         </div>
       </div>
     </div>
@@ -324,7 +709,7 @@
       <div class="footer-grid">
         <div class="footer-col">
           <div class="brand" style="color:#fff;margin-bottom:14px;">
-            <img src="poursoi-logo.png" class="brand__logo brand__logo--footer" alt="POUR SOI" width="145" height="85" loading="lazy" decoding="async">
+            <img src="poursoi-logo.png" class="brand__logo brand__logo--footer" alt="POUR SOI" width="145" height="85" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="brand__fallback-text brand__fallback-text--footer" hidden>POUR SOI</span>
           </div>
           <p style="font-size:14px;color:rgba(248,246,242,0.75);max-width:340px;">
             Пространство красоты, ухода и восстановления в Челябинске. Время для себя в атмосфере заботы и комфорта.
@@ -405,6 +790,10 @@
         <div>
           <label style="font-size:12px;font-weight:600;display:block;margin-bottom:4px;">Выбранная программа или номинал сертификата</label>
           <input type="text" id="certOrderItem" class="search-input">
+        </div>
+        <div class="cert-order-detail">
+          <label for="certSpecificService">Уточнение процедуры / пожелания (если выбираете направление услуг)</label>
+          <input type="text" id="certSpecificService" class="search-input" placeholder="Укажите точное название процедуры, если знаете">
         </div>
         <div class="form-grid-2">
           <div>
